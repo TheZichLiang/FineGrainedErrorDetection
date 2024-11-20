@@ -12,3 +12,5 @@ Create an environment with python>=3.8 and run the following command
 Next, log into huggingface using:
 
 `huggingface-cli login`
+
+Next, ensure you have access to the necessary repository by going to the Huggingface page for the model and accepting access.
