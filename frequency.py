@@ -30,7 +30,7 @@ def get_language_data(lang):
         )
 
 # Select language pair
-language_pair = "ru-en"
+language_pair = "en-de"
 train, validation, test = get_language_data(language_pair)
 
 # Combine datasets
@@ -61,11 +61,22 @@ normal_dist_scaled = normal_dist * len(data['mean']) * bin_width
 
 # Plot normal distribution
 plt.plot(x, normal_dist_scaled, color='red', label='Normal Distribution')
+
+# Add mean and std dev lines
+plt.axvline(mean, color='green', linestyle='--', linewidth=2, label=f'Mean = {mean:.2f}')
+plt.axvline(mean - std_dev, color='orange', linestyle='--', label=f'Std Dev (-) = {mean - std_dev:.2f}')
+plt.axvline(mean + std_dev, color='orange', linestyle='--', label=f'Std Dev (+) = {mean + std_dev:.2f}')
+
+# Add labels and legend
 plt.xlabel('Mean Score')
 plt.ylabel('Frequency')
 plt.title(f'Frequency of Scores for {language_pair} Translations')
 plt.legend()
 plt.grid(axis='y')
 plt.tight_layout()
-plt.savefig("ru-en_binned.png", dpi=300, bbox_inches='tight')
+
+# Save the plot
+plt.savefig("en-de_with_stats.png", dpi=300, bbox_inches='tight')
+
+# Show the plot
 plt.show()
